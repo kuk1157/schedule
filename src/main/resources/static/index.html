@@ -1,229 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>일정관리 게시판</title>
-
+    <!-- css파일 적용-->
+    <link href="/css/main.css" type="text/css" rel="stylesheet"/>
+    <!-- font-awesome(폰트어썸) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+          integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
-
-    <style>
-        @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
-
-        body {
-            margin: 0px;
-        }
-
-        .area-edit {
-            display: none;
-        }
-
-        .wrap {
-            width: 538px;
-            margin: 10px auto;
-        }
-
-        #contents {
-            width: 538px;
-        }
-
-        .area-write {
-            position: relative;
-            width: 538px;
-        }
-
-        .area-write img {
-            cursor: pointer;
-            position: absolute;
-            width: 22.2px;
-            height: 18.7px;
-            bottom: 15px;
-            right: 17px;
-        }
-
-        .background-header {
-            position: fixed;
-            z-index: -1;
-            top: 0px;
-            width: 100%;
-            height: 428px;
-            background-color: #339af0;
-        }
-
-        .background-body {
-            position: fixed;
-            z-index: -1;
-            top: 428px;
-            height: 100%;
-            width: 100%;
-            background-color: #dee2e6;
-        }
-
-        /*.header {*/
-        /*    margin-top: 50px;*/
-        /*}*/
-
-        .header h2 {
-            /*font-family: 'Noto Sans KR', sans-serif;*/
-            height: 33px;
-            font-size: 42px;
-            font-weight: 500;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 0.79;
-            letter-spacing: -0.5px;
-            text-align: center;
-            color: #ffffff;
-        }
-
-        .header p {
-            margin: 15px auto;
-            width: 217px;
-            height: 48px;
-            font-family: 'Noto Sans KR', sans-serif;
-            font-size: 16px;
-            font-weight: 500;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 1.5;
-            letter-spacing: -1.12px;
-            text-align: center;
-            color: #ffffff;
-        }
-
-        textarea.field {
-            width: 502px !important;
-            height: 146px;
-            border-radius: 5px;
-            background-color: #ffffff;
-            border: none;
-            padding: 18px;
-            resize: none;
-        }
-
-        textarea.field::placeholder {
-            width: 216px;
-            height: 16px;
-            font-family: 'Noto Sans KR', sans-serif;
-            font-size: 16px;
-            font-weight: normal;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 1;
-            letter-spacing: -0.96px;
-            text-align: left;
-            color: #868e96;
-        }
-
-        .card {
-            width: 538px;
-            border-radius: 5px;
-            background-color: #ffffff;
-            margin-bottom: 12px;
-        }
-
-        .card .metadata {
-            position: relative;
-            display: flex;
-            font-family: 'Spoqa Han Sans';
-            font-size: 11px;
-            font-weight: normal;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 1;
-            letter-spacing: -0.77px;
-            text-align: left;
-            color: #adb5bd;
-            height: 14px;
-            padding: 10px 23px;
-        }
-
-        .card .metadata .date {
-
-        }
-
-        .card .metadata .username {
-            margin-left: 20px;
-        }
-
-        .contents {
-            padding: 0px 23px;
-            word-wrap: break-word;
-            word-break: break-all;
-        }
-
-        .contents div.edit {
-            display: none;
-        }
-
-        .contents textarea.te-edit {
-            border-right: none;
-            border-top: none;
-            border-left: none;
-            resize: none;
-            border-bottom: 1px solid #212529;
-            width: 100%;
-            font-family: 'Spoqa Han Sans';
-        }
-
-        .footer {
-            position: relative;
-            height: 40px;
-        }
-
-        .footer img.icon-start-edit {
-            cursor: pointer;
-            position: absolute;
-            bottom: 14px;
-            right: 55px;
-            width: 18px;
-            height: 18px;
-        }
-
-        .footer img.icon-end-edit {
-            cursor: pointer;
-            position: absolute;
-            display: none;
-            bottom: 14px;
-            right: 55px;
-            width: 20px;
-            height: 15px;
-        }
-
-        .footer img.icon-delete {
-            cursor: pointer;
-            position: absolute;
-            bottom: 12px;
-            right: 19px;
-            width: 14px;
-            height: 18px;
-        }
-
-        #cards-box {
-            margin-top: 12px;
-        }
-
-        .incFormWrap { width:100%; float:left; padding:0px 25px; }
-        .incFormWrap > form { width:100%; float:left;  }
-        .incFormWrap > form > div { width:100%; float:left; padding:5px 0px; }
-        .incFormWrap > form > div .join_tit { width:20%; float:left; }
-        .incFormWrap > form > div .main_inp { width:80%; float:left; }
-        .incFormWrap > form > div .main_inp2 { width:60%; float:left; }
-        .incFormWrap > form > div .sub_tit { width:20%; float:left; }
-        .incFormWrap > form > div .under_tit { width:100%; float:left; }
-        .incFormWrap > form > div > div > span { line-height:25px; font-size:15px; font-weight:bold; }
-        .incFormWrap > form > div > div > select { width:150px; height:29px; }
-        .incFormWrap > form > div > div > textarea { width:384px; height:65px; resize:none; }
-        .incFormWrap > form > div > div > input { width:85%; float:left; line-height:25px; padding:0px 10px; }
-        .incFormWrap > form > div > div > input::placeholder { color:#ccc; }
-        .under_tit > span { width:274px; float:left; font-weight:bold; font-size:11px; text-align:center; display:none; }
-        .incFormWrap > form > div > .sub_tit > .idcheckBtn { margin-left:5px; line-height:37px; text-align:center; width:114px; float:left; background:none; border:1px solid #ab00bf; color:#ab00bf; }
-        .incFormWrap > form > div > .joinBtn { background:#000; border:none; border-radius:5px; color:#fff; text-align:center; width:120px; float:left; line-height:35px; }
-        .incFormWrap > form > div > .backBtn { background:none; border-radius:5px; border: 1px solid #000; color:#000; text-align:center; width:120px; float:right; line-height:35px; }
-    </style>
     <script>
+        $(document).ready(function () {
+            getSchedules(); // 일정 전체 출력하기
+            getWriters(); // 작성자 등록, 작성자 수정 SELECT 목록 불러오기
+            getSearchList(); // 작성자 검색 목록( 일정작성한 작성자 목록만 출력하기 )
+        })
+
+        // 일정목록 상단에서 작성자 목록 출력 - schedule 테이블 활용
+        function getSearchList(){
+            $.ajax({
+                type: 'GET',
+                url: '/api/schedule/wList',
+                success: function (response) {
+                    for (let i = 0; i < response.length; i++) {
+                        let data = response[i];
+                        let w_id = data['w_id'];
+                        let name = data['name'];
+                        let tempHtml = `
+                            <option value="${w_id}">${name}</option>
+                        `;
+                        $(".opt-value").after(tempHtml);
+                    }
+                }
+            })
+        }
+
+
+        // 작성자 select박스 가져오기 - writer 테이블 활용
+        function getWriters() {
+            $.ajax({
+                type: 'GET',
+                url: '/api/writer',
+                success: function (response) {
+                    for (let i = 0; i < response.length; i++) {
+                        let data = response[i];
+                        let id = data['id'];
+                        let name = data['name'];
+                        let tempHtml = `
+                            <option value="${id}">${name}</option>-->
+                        `;
+                        $('#writerList').append(tempHtml);
+                        $(".writerSelect").append(tempHtml);
+                    }
+                }
+            })
+        }
+
+        // 일정 전체 목록조회
+        function getSchedules() {
+            $('#scheduleList').empty();
+            $.ajax({
+                type: 'GET',
+                url: '/api/schedule',
+                success: function (response) {
+                    for (let i = 0; i < response.length; i++) {
+                        let message = response[i];
+                        let id = message['id'];
+                        let w_id = message['w_id'];
+                        let memo = message['memo'];
+                        let w_name = message['w_name'];
+                        let name = message['name'];
+                        let pw = message['pw'];
+                        let reg_date = message['reg_date'];
+                        let edit_date = message['edit_date'];
+
+                        // <div class="time">
+                        //     <i class="far fa-clock"></i>
+                        //     <span>${reg_date}</span>
+                        // </div>
+                        let tempHtml = `
+       <div class="guestList">
+            <div class="infobox">
+                <div class="nickname">
+                    <i class="far fa-user-circle"></i>
+                    <input type="hidden" class="wid-${id}" value="${w_id}">
+                    <span class="w_name-${id}">${name}</span>
+                    <select id="writer-${id}" class="writerSelect writer-${id}"></select>
+                </div>
+
+
+                <div class="time">
+                    <i class="fas fa-user-edit"></i>
+                    <span>${edit_date}</span>
+                </div>
+            </div>
+            <div class="commbox">
+                <div>
+                    <span>
+                        <span class="inputbox inputbox-${id}">
+                            <span style="width:100%; float:left;">
+                                <i class="fas fa-times cancelbtn" data-id="${id}"></i>
+                                <textarea id="comment" class="memo-${id}">${memo}</textarea>
+                            </span>
+                        </span>
+                        <span class="editbox editbox-${id}" style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+                            <i class="fas fa-edit editbtn" data-id="${id}"></i>
+                            ${memo}
+                        </span>
+                    </span>
+                </div>
+                <div class="btnbox">
+                     <div style="width:50%; float:left;">
+                         <input type="hidden" class="password-${id}" value="${pw}">
+                          <span>비밀번호</span>
+                          <input type="password" class="passwordCh-${id}">
+                     </div>
+                    <div style="width:50%; float:right;">
+                        <button id="delbtn" class="delbtn" type="button" onclick="scheduleDelete(${id})">삭제</button>
+                        <button id="upbtn_${id}" class="upbtn" type="button" value="N" onclick="scheduleEdit(${id})">수정</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+                        `;
+                        // 선택한 영역에 HTML 뿌려주기
+                        $('#scheduleList').append(tempHtml);
+
+                    }
+                }
+            })
+        }
+
         // 일정내용 체크
         function isValidMemo(memo) {
             if (memo == '') {
@@ -238,28 +148,236 @@
         }
 
         // 일정 등록
-        function scheduleWrite(){
+        function scheduleWrite() {
+            let w_id = $("#writerList").val(); // 작성자 ID
             let memo = $(".memo").val(); // 일정내용
             let pw = $(".password").val(); // 비밀번호
+            let pw_check = $(".password_ch").val(); // 비밀번호확인
+            let data = {'w_id' : w_id, 'memo': memo, 'pw': pw, 'pw_check': pw_check};
+
+            // console.log(data);
+            // return false;
+
             // 일정내용 체크
-            if(isValidMemo(memo) == "false"){
-                return false;
+            if (isValidMemo(memo) == "false") {
+                return;
             }
-            let data = { 'memo' : memo, 'pw' : pw };
+            // 비밀번호 스크립트는 페이징 기능까지 넣고 나서 가장 마지막에 진행하기.
+            if (pw != pw_check) {
+                alert("비밀번호가 일치하지 않습니다. 다시 입력바랍니다.");
+                return;
+            }
+
             $.ajax({
-                type : "POST",
-                url : "/api/schedule/",
-                contentType : "application/json",
-                data : JSON.stringify(data),
-                success : function(response){
+                type: "POST",
+                url: "/api/schedule",
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: function (response) {
                     alert("일정 등록을 완료하였습니다.");
                     window.location.reload();
                 }
             })
         }
+        // upbtn누르면 비밀번호 입력란과 일정내용 인풋이 활성화되면서 수정가능하게
+        // 고유번호를 가져와서 각각의 글들만 가능하도록 진행해야함
+
+        // 목록에서 edit아이콘 클릭 - input 활성화
+        $(document).on("click",".editbtn", function(){
+            let id = $(this).data("id"); // 문서 ID
+            // let select = $("#writer-"+id).val();
+            // if(select === null){ // 간헐적으로 정보 못불어올떄 select 박스 api 재호출
+            //     getWriters();
+            // }
+            let selected = $(".wid-"+id).val(); // 작성자 value구하기
+            $("#writer-"+id).val(selected).prop("selected", true); // 수정값에 맞게 selected
+
+            $(".inputbox-"+id).show(); // 인풋활성화
+            $(".editbox-"+id).hide(); // 내용비활성화
+            $(".writer-"+id).show(); // 작성자 수정 SELECT 활성화
+            $(".w_name-"+id).hide(); // 기존 작성자 text 비활성화
+             $("#upbtn_" + id).val("Y"); // 수정시 예외처리 조건값
+        })
+
+        // 목록에서 x아이콘 클릭 - input 비활성화 및 텍스트 보이게
+        $(document).on("click",".cancelbtn", function(){
+            let id = $(this).data("id"); // 문서 ID
+            $(".editbox-"+id).show(); // 인풋활성화
+            $(".inputbox-"+id).hide(); // 내용비활성화
+            $(".writer-"+id).hide(); // 기존 작성자 text 활성화
+            $(".w_name-"+id).show(); // 작성자 수정 SELECT 비활성화
+            $("#upbtn_" + id).val("N"); // 수정시 예외처리 조건값
+        })
+
+        // 일정 수정
+        function scheduleEdit(id) {
+            let check = $(`#upbtn_${id}`).val();
+            if(check == "N"){
+                alert("수정 관련된 정보를 입력하고 수정해주시기 바랍니다.");
+                return false;
+            }
+            let w_id = $(`#writer-${id}`).val(); // 작성자 ID
+            let memo = $(`.memo-${id}`).val(); // 일정 내용
+            let pw = $(`.password-${id}`).val();
+            let pw_ch = $(`.passwordCh-${id}`).val();
+
+            if(!pw_ch){
+                alert("비밀번호를 입력하지 않았습니다.");
+                return false;
+            }
+
+            if(pw != pw_ch){
+                alert("비밀번호가 일치하지 않습니다. 다시 입력바랍니다.");
+                return false;
+            }
+            let data = {'w_id': w_id, 'memo': memo};
+
+            $.ajax({
+                type: "PUT",
+                url: `/api/schedule/${id}`,
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: function (response) {
+                    alert('일정 수정을 완료하였습니다.');
+                    window.location.reload();
+                }
+            });
+        }
+
+        // 일정 삭제.
+        function scheduleDelete(id) {
+            let pw = $(`.password-${id}`).val();
+            let pw_ch = $(`.passwordCh-${id}`).val();
+
+            if(!pw_ch){
+                alert("비밀번호를 입력하지 않았습니다.");
+                return false;
+            }
+
+            if(pw != pw_ch){
+                alert("비밀번호가 일치하지 않습니다. 다시 입력바랍니다.");
+                return false;
+            }
+
+            if(confirm("일정을 삭제하시겠습니까?")){
+                $.ajax({
+                    type: "DELETE",
+                    url: `/api/schedule/${id}`,
+                    success: function (response) {
+                        alert('일정 삭제를 완료하였습니다.');
+                        window.location.reload();
+                    }
+                })
+            }
+        }
+
+        // schedule 테이블 활용
+        function searchGet(){
+            let w_id = $("#w-search-list").val() // 작성자 고유번호
+            let memo = $(".searchInput").val(); // 일정내용
+            let date = $("#date-search").val(); // 날짜 검색기능
+
+            let data = {'w_id': w_id, 'memo': memo, "date" : date};
+            console.log(data);
+            // if(w_id == "" && memo == "" && date == ""){
+            //     return false;
+            // }
+            $('#scheduleList').empty();
+
+            $.ajax({
+                type: 'GET',
+                url: '/api/schedule/search',
+                data : data,
+                success: function (response) {
+                    if(Array.isArray(response) && response.length === 0)  {
+                        let tempHtml = `
+                            <div class="nodata">
+                                <span><i class="far fa-sad-tear"></i></span>
+                                <span>조회된 데이터가 존재하지 않습니다.</span>
+                            </div>
+                        `;
+                        $('#scheduleList').empty();
+                        $('#scheduleList').append(tempHtml);
+                        return false;
+                    }
+
+                    for (let i = 0; i < response.length; i++) {
+                        let message = response[i];
+                        let id = message['id'];
+                        let w_id = message['w_id'];
+                        let memo = message['memo'];
+                        let w_name = message['w_name'];
+                        let name = message['name'];
+                        let pw = message['pw'];
+                        let reg_date = message['reg_date'];
+                        let edit_date = message['edit_date'];
+
+                        // <div class="time">
+                        //     <i class="far fa-clock"></i>
+                        //     <span>${reg_date}</span>
+                        // </div>
+
+                        console.log(response);
+
+                        if(message){
+                        let tempHtml = `
+       <div class="guestList">
+            <div class="infobox">
+                <div class="nickname">
+                    <i class="far fa-user-circle"></i>
+                    <span class="w_name-${id}">${name}</span>
+                    <select id="writer-${id}" class="writerSelect writer-${id}"></select>
+                </div>
+
+
+                <div class="time">
+                    <i class="fas fa-user-edit"></i>
+                    <span>${edit_date}</span>
+                </div>
+            </div>
+            <div class="commbox">
+                <div>
+                    <span>
+                        <span class="inputbox inputbox-${id}">
+                            <span style="width:100%; float:left;">
+                                <i class="fas fa-times cancelbtn" data-id="${id}"></i>
+                                <textarea id="comment" class="memo-${id}">${memo}</textarea>
+                            </span>
+                        </span>
+                        <span class="editbox editbox-${id}" style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+                            <i class="fas fa-edit editbtn" data-id="${id}"></i>
+                            ${memo}
+                        </span>
+                    </span>
+                </div>
+                <div class="btnbox">
+                     <div style="width:50%; float:left;">
+                         <input type="hidden" class="password-${id}" value="${pw}">
+                          <span>비밀번호</span>
+                          <input type="password" class="passwordCh-${id}">
+                     </div>
+                    <div style="width:50%; float:right;">
+                        <button id="delbtn" class="delbtn" type="button" onclick="scheduleDelete(${id})">삭제</button>
+                        <button id="upbtn_${id}" class="upbtn" type="button" value="N" onclick="scheduleEdit(${id})">수정</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+                        `;
+                            // 선택한 영역에 HTML 뿌려주기
+                            $('#scheduleList').append(tempHtml);
+                        }
+
+                    }
+                },
+                error: function(xhr, status, error){
+                    console.log(status, error);
+                }
+
+            })
+        }
     </script>
 </head>
-
 <body>
 <div class="background-header">
 
@@ -274,58 +392,69 @@
             일정을 입력해주세요.
         </p>
     </div>
-<!--    <div class="area-write">-->
-<!--        <textarea class="field" placeholder="공유하고 싶은 소식을 입력해주세요" name="contents" id="contents" cols="30"-->
-<!--                  rows="10"></textarea>-->
-<!--        &lt;!&ndash;            <button class="btn btn-danger" onclick="writePost()">작성하기</button>&ndash;&gt;-->
-<!--        <img src="images/send.png" alt="" onclick="writePost()">-->
-<!--    </div>-->
-
     <div class="incFormWrap">
         <form method="POST">
-            <!-- 레벨4때 활용 -->
-<!--            <div>-->
-<!--                <div class="join_tit">-->
-<!--                    <span>작성자</span>-->
-<!--                </div>-->
-<!--                <div class="main_inp">-->
-<!--                    <select id="writerList" name="w_idx">-->
-<!--                        <option value="ajax로 쿼리뿌려서 작성자idx">작성자이름</option>-->
-<!--                        <option value="ajax로 쿼리뿌려서 작성자idx">작성자이름</option>-->
-<!--                        <option value="ajax로 쿼리뿌려서 작성자idx">작성자이름</option>-->
-<!--                        <option value="ajax로 쿼리뿌려서 작성자idx">작성자이름</option>-->
-<!--                    </select>-->
-<!--                </div>-->
-<!--            </div>-->
             <div>
-                <div class="join_tit">
+                <div class="join-tit">
+                    <span>작성자</span>
+                </div>
+                <div class="main-inp">
+                    <select id="writerList" name="w_id">
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="join-tit">
                     <span style="line-height:65px;">내용</span>
                 </div>
-                <div class="main_inp">
+                <div class="main-inp">
                     <textarea class="memo" name="memo"></textarea>
                 </div>
             </div>
             <div>
-                <div class="join_tit">
+                <div class="join-tit">
                     <span>비밀번호</span>
                 </div>
-                <div class="main_inp">
+                <div class="main-inp">
                     <input type="password" class="password" name="password">
                 </div>
             </div>
             <div>
-                <div class="join_tit">
+                <div class="join-tit">
                     <span>비밀번호확인</span>
                 </div>
-                <div class="main_inp">
+                <div class="main-inp">
                     <input type="password" class="password_ch" name="password_ch">
                 </div>
             </div>
-            <div>
+            <div style="width:92%;">
                 <button type="button" class="joinBtn" onclick="scheduleWrite()">일정 작성</button>
             </div>
         </form>
     </div>
+
+    <div class="listWrap">
+        <form id="serachFrom" method="get">
+            <div class="searchWrap">
+                <button type="reset" onclick="getSchedules()">초기화</button>
+                <button type="button" onclick="searchGet()">검색</button>
+                <input type="text" class="searchInput" placeholder="일정 내용 입력">
+                <select id="w-search-list">
+                    <option class="opt-value" value="">작성자 검색</option>
+                </select>
+                <select id="date-search">
+                    <option value="">기간 검색</option>
+                    <option value="1">1일</option>
+                    <option value="7">일주일</option>
+                    <option value="30">1개월</option>
+                    <option value="90">3개월</option>
+                </select>
+            </div>
+            <div class="listbox" id="scheduleList">
+            </div>
+        </form>
+    </div>
+
 </div>
 </body>
 </html>
