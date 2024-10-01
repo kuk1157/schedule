@@ -1,0 +1,81 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+body {margin: 0px;}
+.area-edit {display: none;}
+.wrap {width: 538px;margin: 10px auto;}
+#contents {width: 538px;}
+.area-write {position: relative;width: 538px;}
+.area-write img {cursor: pointer;position: absolute;width: 22.2px;height: 18.7px;bottom: 15px;right: 17px;}
+.background-header {position: fixed;z-index: -1;top: 0px;width: 100%;height: 428px;background-color: #339af0;}
+.background-body {position: fixed;z-index: -1;top: 428px;height: 100%;width: 100%;background-color: #dee2e6;}
+
+/*.header {*/
+/*    margin-top: 50px;*/
+/*}*/
+.header h2 {/*font-family: 'Noto Sans KR', sans-serif;*/height: 33px;font-size: 42px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 0.79;letter-spacing: -0.5px;text-align: center;color: #ffffff;}
+.header p {margin: 15px auto;width: 217px;height: 48px;font-family: 'Noto Sans KR', sans-serif;font-size: 16px;font-weight: 500;font-stretch: normal;font-style: normal;line-height: 1.5;letter-spacing: -1.12px;text-align: center;color: #ffffff;}
+textarea.field {width: 502px !important;height: 146px;border-radius: 5px;background-color: #ffffff;border: none;padding: 18px;resize: none;}
+textarea.field::placeholder {width: 216px;height: 16px;font-family: 'Noto Sans KR', sans-serif;font-size: 16px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1;letter-spacing: -0.96px;text-align: left;color: #868e96;}
+.card {width: 538px;border-radius: 5px;background-color: #ffffff;margin-bottom: 12px;}
+.card .metadata {position: relative;display: flex;font-family: 'Spoqa Han Sans';font-size: 11px;font-weight: normal;font-stretch: normal;font-style: normal;line-height: 1;letter-spacing: -0.77px;text-align: left;color: #adb5bd;height: 14px;padding: 10px 23px;}
+/* .card .metadata .date {} */
+.card .metadata .username {margin-left: 20px;}
+.contents {padding: 0px 23px;word-wrap: break-word;word-break: break-all;}
+.contents div.edit {display: none;}
+.contents textarea.te-edit {border-right: none;border-top: none;border-left: none;resize: none;border-bottom: 1px solid #212529;width: 100%;font-family: 'Spoqa Han Sans';}
+.footer {position: relative;height: 40px;}
+.footer img.icon-start-edit {cursor: pointer;position: absolute;bottom: 14px;right: 55px;width: 18px;height: 18px;}
+.footer img.icon-end-edit {cursor: pointer;position: absolute;display: none;bottom: 14px;right: 55px;width: 20px;height: 15px;}
+.footer img.icon-delete {cursor: pointer;position: absolute;bottom: 12px;right: 19px;width: 14px;height: 18px;}
+#cards-box {margin-top: 12px;}
+
+.listWrap { width:100%; float:left; margin: 30px 0px;}
+.listWrap > form { width:100%; float:left; }
+.listWrap > form > .searchWrap { width:100%; float:right; padding:10px 13px 10px 0px;}
+.listWrap > form > .searchWrap > * { float:right; line-height:25px; margin-left:5px; }
+.listWrap > form > .searchWrap > select { width:110px; height:31px; }
+.listWrap > form > .searchWrap > input { width:142px; }
+.listWrap > form > .searchWrap > button { width:55px; background-color:#000; border:none;  border-radius:5px; height:31px; color:#fff; line-height:31px; }
+
+.listbox {width: 100%; float: left;}
+.listbox > h1 {margin: 30px 0px;}
+
+.listbox > .nodata { width:100%; float:left; padding:20px 0px; border:1px solid;}
+.listbox > .nodata > span { text-align:center; width:100%; float:left; font-size:20px; margin:5px 0px; }
+.listbox > .nodata > span > i { font-size:40px; }
+
+
+.listbox > div {width: 86%; float: left;border: 1px solid #ccc;padding: 10px 30px;margin-bottom: 30px;}
+.listbox > div > div {width: 100%;float: left;}
+.listbox > div > .infobox > .nickname {width: 25%;float: left;}
+.listbox > div > .infobox > .time {width: 75%;float: left;}
+.listbox > div > .commbox { border-top: 1px solid #ccc; margin-top: 10px; padding-top:10px;}
+.listbox > div > .commbox > div {width: 100%;float: left; padding:5px 0px;}
+.listbox > div > .commbox > div > span {width: 100%;float: left;}
+.listbox > div > .commbox > div > span > span {width: 100%;float: left;}
+.listbox > div > .commbox > div > span > span.inputbox {display: none; padding:15px 0px;}
+.listbox > div > .commbox > div > span > span > span > i.cancelbtn {color: red;margin-right: 10px; line-height: 60px; float:left;}
+.listbox > div > .commbox > div > span > span > span > textarea {width: 419px; border:none; padding: 0px 10px; border-radius: 5px; resize:none; height:60px;}
+.listbox > div > .commbox > .btnbox > div > span  { width:28%; float:left; line-height:30px; margin-right:5px; }
+.listbox > div > .commbox > .btnbox > div > input { padding:0px 5px; border:none; border-radius:5px; float:left; width:150px; line-height:30px; }
+.listbox > div > .commbox > .btnbox > div > button {border: none;width: 80px;padding: 5px;float: right; line-height:20px; border-radius:5px;}
+.listbox > div > .commbox > .btnbox > div > .upbtn {margin-right: 5px;}
+.listbox > div > .commbox > .btnbox > div > .delbtn {background-color: red;color: #fff;}
+input.inputcomment {width: 400px;padding: 20px 10px;}
+
+.incFormWrap {width: 100%;float: left;padding: 0px 25px;}
+.incFormWrap > form {width: 100%;float: left;}
+.incFormWrap > form > div {width: 100%;float: left;padding: 5px 0px;}
+.incFormWrap > form > div .join-tit {width: 20%;float: left;}
+.incFormWrap > form > div .main-inp {width: 80%;float: left;}
+.incFormWrap > form > div > div > span {line-height: 25px;font-size: 15px;font-weight: bold;}
+.incFormWrap > form > div > div > select {width: 150px;height: 29px;}
+.incFormWrap > form > div > div > textarea {width: 384px;height: 65px;resize: none;}
+.incFormWrap > form > div > div > input {width: 85%;float: left;line-height: 25px;padding: 0px 10px;}
+.incFormWrap > form > div > div > input::placeholder {color: #ccc;}
+.under_tit > span {width: 274px;float: left;font-weight: bold;font-size: 11px;text-align: center;display: none;}
+.incFormWrap > form > div > .sub-tit > .idcheckBtn {margin-left: 5px;line-height: 37px;text-align: center;width: 114px;float: left;background: none;border: 1px solid #ab00bf;color: #ab00bf;}
+.incFormWrap > form > div > .joinBtn {background: #000;border: none;border-radius: 5px;color: #fff;text-align: center;width: 100px;float: right;line-height: 35px;}
+.incFormWrap > form > div > .backBtn {background: none;border-radius: 5px;border: 1px solid #000;color: #000;text-align: center;width: 120px;float: right;line-height: 35px;}
+
+
+.writerSelect { display:none; }
