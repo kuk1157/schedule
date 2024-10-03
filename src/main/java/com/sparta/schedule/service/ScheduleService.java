@@ -10,7 +10,6 @@ import java.util.List;
 
 public class ScheduleService {
 
-
     private final JdbcTemplate jdbcTemplate;
     public ScheduleService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -31,17 +30,27 @@ public class ScheduleService {
     }
 
     // 일정 전체조회
-    public List<ScheduleResponseDto> getSchedules() {
+    // cnt : 일정 게시글 기본 개수 - getSchedules(함수명)
+    // id : 일정 상세보기 일정 ID - getSchedules(함수명)
+    // limit1 : 페이징 limit 첫번째 값 - getLimit(함수명)
+    // limit2 : 페이징 limit 두번째 값 - getLimit(함수명)
+    public List<ScheduleResponseDto> getSchedules(String cnt, String id, String limit1, String limit2) {
         // ScheduleRepository에서 db관련 처리
         ScheduleRepository scheduleRepository = new ScheduleRepository(jdbcTemplate);
-        return scheduleRepository.allSelect();
+        return scheduleRepository.allSelect(cnt, id, limit1, limit2);
     }
 
     // 일정 검색 조회
-    public List<ScheduleResponseDto> getSearch(String w_id, String memo, String date) {
+    // cnt : 일정 게시글 기본 개수 - searchGet(함수명)
+    // limit1 : 페이징 limit 첫번째 값 - getLimitSearch(함수명)
+    // limit2 : 페이징 limit 두번째 값 - getLimitSearch(함수명)
+    // w_id : 작성자 ID(select) - searchGet(함수명)
+    // memo : 일정 내용(input) - searchGet(함수명)
+    // date : 기간검색(select) - searchGet(함수명)
+    public List<ScheduleResponseDto> getSearch(String count, String limit1, String limit2, String w_id, String memo, String date) {
         // ScheduleRepository에서 db관련 처리
         ScheduleRepository scheduleRepository = new ScheduleRepository(jdbcTemplate);
-        return scheduleRepository.searchFind(w_id,memo,date);
+        return scheduleRepository.searchFind(count, limit1, limit2, w_id, memo, date);
     }
 
 
@@ -50,6 +59,12 @@ public class ScheduleService {
         // ScheduleRepository에서 db관련 처리
         ScheduleRepository scheduleRepository = new ScheduleRepository(jdbcTemplate);
         return  scheduleRepository.selectWList();
+    }
+
+    // 일정 데이터 개수 조회(COUNT)
+    public List<ScheduleResponseDto> getCount() {
+        ScheduleRepository scheduleRepository = new ScheduleRepository(jdbcTemplate);
+        return scheduleRepository.selectCount();
     }
 
     // 일정 수정
