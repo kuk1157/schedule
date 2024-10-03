@@ -1,4 +1,5 @@
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+button { cursor:pointer; } /* 전체 버튼 커서 포인터 */
 body {margin: 0px;}
 .area-edit {display: none;}
 .wrap {width: 538px;margin: 10px auto;}
@@ -28,6 +29,13 @@ textarea.field::placeholder {width: 216px;height: 16px;font-family: 'Noto Sans K
 .footer img.icon-delete {cursor: pointer;position: absolute;bottom: 12px;right: 19px;width: 14px;height: 18px;}
 #cards-box {margin-top: 12px;}
 
+
+/* 3단 구조 div */
+.mainbox { width:100%; float:left; min-width:1200px; margin-top:50px; }
+.mainbox > div { width:800px; margin:0 auto; }
+.mainbox > div > div { width:100%; float:left; }
+
+/* 상단 검색영역 */
 .listWrap { width:100%; float:left; margin: 30px 0px;}
 .listWrap > form { width:100%; float:left; }
 .listWrap > form > .searchWrap { width:100%; float:right; padding:10px 13px 10px 0px;}
@@ -35,25 +43,27 @@ textarea.field::placeholder {width: 216px;height: 16px;font-family: 'Noto Sans K
 .listWrap > form > .searchWrap > select { width:110px; height:31px; }
 .listWrap > form > .searchWrap > input { width:142px; }
 .listWrap > form > .searchWrap > button { width:55px; background-color:#000; border:none;  border-radius:5px; height:31px; color:#fff; line-height:31px; }
+/* 상단 검색영역 */
 
+
+/* 일정 목록 전체 */
 .listbox {width: 100%; float: left;}
 .listbox > h1 {margin: 30px 0px;}
-
 .listbox > .nodata { width:100%; float:left; padding:20px 0px; border:1px solid;}
 .listbox > .nodata > span { text-align:center; width:100%; float:left; font-size:20px; margin:5px 0px; }
 .listbox > .nodata > span > i { font-size:40px; }
-
-
 .listbox > div {width: 86%; float: left;border: 1px solid #ccc;padding: 10px 30px;margin-bottom: 30px;}
 .listbox > div > div {width: 100%;float: left;}
 .listbox > div > .infobox > .nickname {width: 25%;float: left;}
-.listbox > div > .infobox > .time {width: 75%;float: left;}
+.listbox > div > .infobox > .nickname > button { border:none; background:#000; color:#fff; height:25px; float:right; border-radius:5px; cursor:pointer; }
+.listbox > div > .infobox > .time {width: 50%;float: left;}
 .listbox > div > .commbox { border-top: 1px solid #ccc; margin-top: 10px; padding-top:10px;}
 .listbox > div > .commbox > div {width: 100%;float: left; padding:5px 0px;}
 .listbox > div > .commbox > div > span {width: 100%;float: left;}
 .listbox > div > .commbox > div > span > span {width: 100%;float: left;}
 .listbox > div > .commbox > div > span > span.inputbox {display: none; padding:15px 0px;}
-.listbox > div > .commbox > div > span > span > span > i.cancelbtn {color: red;margin-right: 10px; line-height: 60px; float:left;}
+.listbox > div > .commbox > div > span > span > i.editbtn { cursor:pointer; }
+.listbox > div > .commbox > div > span > span > span > i.cancelbtn {color: red;margin-right: 10px; line-height: 60px; float:left; cursor:pointer;}
 .listbox > div > .commbox > div > span > span > span > textarea {width: 419px; border:none; padding: 0px 10px; border-radius: 5px; resize:none; height:60px;}
 .listbox > div > .commbox > .btnbox > div > span  { width:28%; float:left; line-height:30px; margin-right:5px; }
 .listbox > div > .commbox > .btnbox > div > input { padding:0px 5px; border:none; border-radius:5px; float:left; width:150px; line-height:30px; }
@@ -61,7 +71,10 @@ textarea.field::placeholder {width: 216px;height: 16px;font-family: 'Noto Sans K
 .listbox > div > .commbox > .btnbox > div > .upbtn {margin-right: 5px;}
 .listbox > div > .commbox > .btnbox > div > .delbtn {background-color: red;color: #fff;}
 input.inputcomment {width: 400px;padding: 20px 10px;}
+.writerSelect { display:none; }
+/* 일정 목록 전체 */
 
+/* 일정 등록 폼 */
 .incFormWrap {width: 100%;float: left;padding: 0px 25px;}
 .incFormWrap > form {width: 100%;float: left;}
 .incFormWrap > form > div {width: 100%;float: left;padding: 5px 0px;}
@@ -76,6 +89,7 @@ input.inputcomment {width: 400px;padding: 20px 10px;}
 .incFormWrap > form > div > .sub-tit > .idcheckBtn {margin-left: 5px;line-height: 37px;text-align: center;width: 114px;float: left;background: none;border: 1px solid #ab00bf;color: #ab00bf;}
 .incFormWrap > form > div > .joinBtn {background: #000;border: none;border-radius: 5px;color: #fff;text-align: center;width: 100px;float: right;line-height: 35px;}
 .incFormWrap > form > div > .backBtn {background: none;border-radius: 5px;border: 1px solid #000;color: #000;text-align: center;width: 120px;float: right;line-height: 35px;}
+/* 일정 등록 폼 */
 
-
-.writerSelect { display:none; }
+/* 페이징 영역 */
+.paging > div > span { cursor:pointer; }
