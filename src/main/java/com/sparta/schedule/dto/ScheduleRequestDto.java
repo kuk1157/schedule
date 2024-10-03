@@ -11,7 +11,8 @@ public class ScheduleRequestDto { // 데이터 한줄
     private String pw; // 비밀번호
     private String pw_check; // 비밀번호확인
     private String reg_date; // 작성시간
-    private String edit_date;
+    private String edit_date; // 수정일
 
     private String name; // 작성자 이름 서브쿼리
+    private int count; // 일정 데이터 개수
 }
