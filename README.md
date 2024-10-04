@@ -200,3 +200,11 @@ LIMIT 6,3
 ★ LIMIT [몇번째부터] [보여줄 개수]
 
 
+### 페이징 영상) 
+
+https://github.com/user-attachments/assets/a9c1eb3a-2dde-403f-86ff-64e529e75f27
+
+
+
+
+
