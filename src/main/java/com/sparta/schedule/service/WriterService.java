@@ -1,6 +1,8 @@
 package com.sparta.schedule.service;
 
+import com.sparta.schedule.dto.WriterRequestDto;
 import com.sparta.schedule.dto.WriterResponseDto;
+import com.sparta.schedule.entity.Writer;
 import com.sparta.schedule.repository.WriterRepository;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -16,5 +18,19 @@ public class WriterService {
     public List<WriterResponseDto> getwriters() {
         WriterRepository writerRepository = new WriterRepository(jdbcTemplate);
         return writerRepository.allWriters();
+    }
+
+    public WriterResponseDto createWriter(WriterRequestDto writerRequestDto) {
+        // RequestDto - Entity
+        Writer writer = new Writer(writerRequestDto);
+
+        // ScheduleRepository에서 db관련 처리
+        WriterRepository writerRepository = new WriterRepository(jdbcTemplate);
+        Writer insertWriter = writerRepository.insert(writer);
+
+        // Entity - ResponseDto
+        WriterResponseDto writerResponseDto = new WriterResponseDto(writer);
+        return writerResponseDto;
+
     }
 }
