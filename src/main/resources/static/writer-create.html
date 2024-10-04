@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>작성자 등록</title>
+    <!-- css파일 적용-->
+    <link href="/css/main.css" type="text/css" rel="stylesheet"/>
+    <!-- font-awesome(폰트어썸) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+          integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+    <script>
+
+        // 작성자 등록 API
+        function writerCreate(){
+            let name = $(".name").val(); // 이름
+            let email = $(".email").val(); // 이메일
+            if(!name){ // 이름 필수값으로 예외처리
+                alert("이름을 입력해주시기 바랍니다.");
+                return false;
+            }
+
+            let data = { "name" : name, "email" : email };
+            // 일정 수정 API 전송
+            $.ajax({
+                type: "POST",
+                url: `/api/writer`,
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: function (response) {
+                    alert('작성자 등록을 완료하였습니다.');
+                    window.location.reload();
+                }
+            });
+        }
+    </script>
+</head>
+<style>
+    html { height:100%; background-color: #339af0; }
+    .incFormWrap > form > div > div > span {line-height: 35px;font-size: 15px;font-weight: bold;}
+    .incFormWrap > form > div > div > select {width: 150px;height: 35px;}
+    .incFormWrap > form > div > div > textarea {width: 88%; height: 100px;resize: none;}
+    .incFormWrap > form > div > div > input {width: 85%;float: left;line-height: 31px;padding: 0px 10px;}
+</style>
+<body>
+<div class="mainbox">
+    <div>
+        <div style="border:1px solid #000; padding:50px;">
+            <!-- 제목 영역 시작 -->
+            <div style="width:100%; float:left;">
+                <h1 style="text-align:center;">[ 작성자 등록 ]</h1>
+            </div>
+            <!-- 제목 영역 끝 -->
+
+
+            <!-- 작성자 등록 영역 시작 -->
+            <div class="incFormWrap" style="padding:0px;">
+                <form method="POST">
+                    <div>
+                        <div class="join-tit">
+                            <span>이름</span>
+                        </div>
+                        <div class="main-inp">
+                            <input type="text" class="name" name="name">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="join-tit">
+                            <span>이메일</span>
+                        </div>
+                        <div class="main-inp">
+                            <input type="text" class="email" name="email">
+                        </div>
+                    </div>
+                    <div style="width:92%;">
+                        <button onclick="window.location.href='index.html'" style="background:none; border:1px solid #fff;" type="button" class="joinBtn" onclick="">
+                            <i class="fas fa-sign-out-alt"></i> 이전
+                        </button>
+                        <button style="margin-right:5px;" type="button" class="joinBtn" onclick="writerCreate()">
+                            <i class="far fa-check-circle"></i> 등록 완료
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <!-- 작성자 등록 영역 끝 -->
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+
