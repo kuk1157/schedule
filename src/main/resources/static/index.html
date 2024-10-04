@@ -757,12 +757,24 @@
 
 </div>
 <div class="wrap">
+
+    <!-- 작성자등록 페이지 이동 영역 시작 -->
+    <div class="writer-create">
+        <button onclick="window.location.href='writer-create.html'">
+            작성자등록
+            <i class="fas fa-user"></i>
+        </button>
+    </div>
+    <!-- 작성자등록 페이지 이동 영역 시작 -->
+
+    <!-- 상단 제목 영역 시작 -->
     <div class="header">
         <h2>schedule</h2>
         <p>
             일정을 입력해주세요.
         </p>
     </div>
+    <!-- 상단 제목 영역 끝 -->
 
     <!-- 일정 등록 영역 (레벨 2,4) 시작 -->
     <div class="incFormWrap">
@@ -833,11 +845,11 @@
     <!-- 일정 목록 영역/수정,삭제,검색 및 페이징적용(레벨 2,3,4,5) 끝 -->
 
     <!-- 페이징 영역 (레벨5) 시작 -->
-    <div class="first-page" style="width:100%; float:left; text-align:center; display:none;">
+    <div class="first-page">
         <span>1</span>
     </div>
-    <div class="paging" style="width:100%; float:left; text-align:center; display:none; border:1px solid #ccc; padding:5px 0px;">
-        <div style="width:100%; float:left;" class="paging-list"></div>
+    <div class="paging">
+        <div class="paging-list"></div>
     </div>
     <!-- 페이징 영역 (레벨5) 끝 -->
 
