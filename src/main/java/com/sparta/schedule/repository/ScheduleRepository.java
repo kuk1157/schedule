@@ -152,7 +152,6 @@ public class ScheduleRepository {
 
     // 일정 삭제 (DELETE) - DELETE
     public void delete(int id) {
-
         // DELETE 쿼리
         String sql = "DELETE FROM schedule WHERE id = ?";
         // [ WHERE 조건 ] - 일정 ID
