@@ -13,18 +13,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
     <script>
-
         // 작성자 등록 API
         function writerCreate(){
             let name = $(".name").val(); // 이름
             let email = $(".email").val(); // 이메일
-            if(!name){ // 이름 필수값으로 예외처리
+            if(!name){
                 alert("이름을 입력해주시기 바랍니다.");
                 return false;
             }
-
             let data = { "name" : name, "email" : email };
-            // 일정 수정 API 전송
             $.ajax({
                 type: "POST",
                 url: `/api/writer`,
@@ -54,8 +51,6 @@
                 <h1 style="text-align:center;">[ 작성자 등록 ]</h1>
             </div>
             <!-- 제목 영역 끝 -->
-
-
             <!-- 작성자 등록 영역 시작 -->
             <div class="incFormWrap" style="padding:0px;">
                 <form method="POST">
@@ -86,7 +81,6 @@
                 </form>
             </div>
             <!-- 작성자 등록 영역 끝 -->
-
         </div>
     </div>
 </div>

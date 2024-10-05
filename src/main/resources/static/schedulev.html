@@ -14,18 +14,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
     <script>
         // 일정 ID GET-값 추출
-        let queryString = location.search; // 쿼리스트링 추출
-        const scheduleId = new URLSearchParams(queryString); // key, value 추출
+        let queryString = location.search;
+        const scheduleId = new URLSearchParams(queryString);
             $(document).ready(function () {
                 let id = scheduleId.get("id"); // 일정 ID - key 기준으로 value 추출
                 $(".schedule-id").text("일정 ID : "+id); // 일정 ID 상세보기 폼 위에 출력
                 getWriters(); // 작성자 등록, 작성자 수정 SELECT 목록 불러오기
                 getSchedules(id); // 일정 전체조회 API - 일정 ID 매개변수로 넣어서 데이터 가져오기
             })
-
             // 작성자 명단 가져오기 - (writer 테이블)
             function getWriters() {
-                // 작성자 명단 가져오기 api 전송
                 $.ajax({
                     type: 'GET',
                     url: '/api/writer',
@@ -34,23 +32,18 @@
                             let data = response[i];
                             let id = data['id']; // 작성자 I
                             let name = data['name']; // 작성자 이름
-                            // 구해온 값으로 <option> 태그 생성
                             let tempHtml = `
                             <option value="${id}">${name}</option>
                         `;
-                            // select 박스안에 <option>태그 넣어주기
                             $('#writerList').append(tempHtml);
                         }
                     }
                 })
             }
-
             // 일정 ID 매개변수로 1개 데이터만 가져오기 - (schedule 테이블)
             function getSchedules(id) {
                 let data = { "id" : id }; // 일정 ID
                 console.log(data);
-
-                // 일정 ID 매개변수로 1개 데이터만 가져오기 API 전송(getSchedule 일정전체조회에서 ID 기준으로 WHERE 문 추가)
                 $.ajax({
                     type: 'GET',
                     data : data,
@@ -63,7 +56,6 @@
                             let memo = message['memo']; // 일정 내용
                             let pw = message['pw']; // 일정 비밀번호
                             let edit_date = message['edit_date']; // 일정 수정일
-
                             // [ 값 세팅 - 수정일, 내용, 비밀번호, 작성자, ]
                             $(".edit-date").text("일정 수정일 : "+edit_date);
                             $(".memo").text(memo);
@@ -73,33 +65,26 @@
                     }
                 })
             }
-
             // 일정 수정 - (schedule 테이블)
             function scheduleEdit() {
-
                 let id = scheduleId.get("id"); // 일정 ID
                 let w_id = $('#writerList').val(); // 작성자 ID
                 let memo = $('.memo').val(); // 일정 내용
                 let pw = $(".password").val(); // 일정 비밀번호
                 let pw_ch = $(".password-ch").val(); // Input hidden 으로 담아둔 비밀번호(DB에 저장된 비밀번호)
-
-                if (!memo) { // 일정내용 미입력시 예외처리
+                if (!memo) {
                     alert("일정 내용을 입력해주시기 바랍니다.");
                     return false;
                 }
-
-                if (!pw) { // 비밀번호 미입력시 예외처리
+                if (!pw) {
                     alert("비밀번호를 입력해주시기 바랍니다.");
                     return false;
                 }
-
-                if (pw != pw_ch) { // 비밀번호 일치하지 않을 경우 예외처리
+                if (pw != pw_ch) {
                     alert("비밀번호가 일치하지 않습니다. 다시 입력바랍니다.");
                     return false;
                 }
                 let data = {'id': id, 'w_id': w_id, 'memo': memo};
-
-                // 일정 수정 API 전송
                 $.ajax({
                     type: "PUT",
                     url: `/api/schedule/${id}`,
@@ -124,8 +109,6 @@
 <div class="mainbox">
     <div>
         <div style="border:1px solid #000; padding:50px;">
-
-
             <!-- 상세보기 제목 영역 시작 -->
             <div style="width:100%; float:left;">
                 <h1 style="text-align:center;">[ 일정 상세보기 ]</h1>
@@ -184,7 +167,6 @@
                 </form>
             </div>
             <!-- 일정 상세보기 및 수정 영역 끝 -->
-
         </div>
     </div>
 </div>
