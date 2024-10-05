@@ -21,8 +21,6 @@ public class WriterRepository {
 
     // 작성자 명단 조회 - 일정등록 SELECT, 일정 수정 SELECT (레벨 2,3,4 연동)
     public List<WriterResponseDto> allWriters() {
-
-        // SELECT 쿼리 - SELECT 박스에 필요한 작성자 ID, 작성자 이름만 조회
         String sql = "SELECT id,name FROM writer";
         return jdbcTemplate.query(sql, new RowMapper<WriterResponseDto>() {
             @Override
@@ -36,7 +34,6 @@ public class WriterRepository {
 
     // 작성자등록 DB 저장(INSERT) - POST
     public Writer insert(Writer writer) {
-        // INSERT 쿼리
         String sql = "INSERT INTO writer (name, email, reg_date) VALUES (?, ?, now()) ";
         jdbcTemplate.update(con -> {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);

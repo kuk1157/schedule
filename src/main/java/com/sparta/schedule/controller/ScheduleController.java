@@ -9,8 +9,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class ScheduleController {
-
-    // jdbcTemplate 불러오기
     private final JdbcTemplate jdbcTemplate;
     public ScheduleController(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -24,11 +22,6 @@ public class ScheduleController {
     }
 
     // 일정 전체조회 분리
-    // 일정상세보기, 페이징, 검색 초기화 3개 기능에서 해당 API 사용중
-    // cnt : 일정 게시글 기본 개수 - getSchedules(함수명)
-    // id : 일정 상세보기 일정 ID - getSchedules(함수명)
-    // limit1 : 페이징 limit 첫번째 값 - getLimit(함수명)
-    // limit2 : 페이징 limit 두번째 값 - getLimit(함수명)
     @GetMapping("/schedule")
     public List<ScheduleResponseDto> getSchedules(String cnt, String id, String limit1, String limit2) {
         ScheduleService scheduleService = new ScheduleService(jdbcTemplate);
@@ -36,12 +29,6 @@ public class ScheduleController {
     }
 
     // 일정 검색 조회 분리
-    // cnt : 일정 게시글 기본 개수 - searchGet(함수명)
-    // limit1 : 페이징 limit 첫번째 값 - getLimitSearch(함수명)
-    // limit2 : 페이징 limit 두번째 값 - getLimitSearch(함수명)
-    // w_id : 작성자 ID(select) - searchGet(함수명)
-    // memo : 일정 내용(input) - searchGet(함수명)
-    // date : 기간검색(select) - searchGet(함수명)
     @GetMapping("/schedule/search")
     public List<ScheduleResponseDto> getSearch(String count, String limit1, String limit2, @RequestParam(required = false) String w_id, @RequestParam(required = false) String memo, @RequestParam(required = false) String date) {
         ScheduleService scheduleService = new ScheduleService(jdbcTemplate);
