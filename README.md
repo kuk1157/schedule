@@ -1,29 +1,31 @@
 # [ Spring 개인과제_1 - 일정관리 게시판(앱)  ]
 
-개인과제 레벨 2,3,4 : 
+개인과제 레벨 2,3,4 : https://kuk1938.tistory.com/154
 
-개인과제 레벨 5 : 
+개인과제 레벨 5 : https://kuk1938.tistory.com/156
 
-트러블 슈팅 : 
+트러블 슈팅 : https://kuk1938.tistory.com/155
 
 #
 
-### 일정관리 설계서) 
+### 레벨1 - 일정관리 설계서) 
 ![image](https://github.com/user-attachments/assets/59ec9222-d2d6-435e-890f-38683e2ae160)
 
 ㄴ ERD
 
 #
-![image](https://github.com/user-attachments/assets/c090b364-8c59-44f2-9578-4ebd57989e80)
+![image](https://github.com/user-attachments/assets/d4dffdbe-f061-4d01-bc38-d18768c6586c)
 
 ㄴ 요구사항 및 API명세서
 
 #
-![image](https://github.com/user-attachments/assets/5ac6cc37-9586-409f-896f-7f76fcdb0270)
+![image](https://github.com/user-attachments/assets/7f7932be-d8ce-4499-a55e-899eff47fa87)
 
 ㄴ API명세서 상세
 
+https://moonddev-9794.postman.co/workspace/moonddev-Workspace~c3ed51a4-6c51-4a48-b8d6-b6e3245bdf3a/collection/38606783-c8a0bb09-78a2-4592-904c-2b695ed39dbb?action=share&creator=38606783
 
+ㄴ API명세서 링크
 
 
 
@@ -84,9 +86,15 @@
 
 - 일정등록시 작성자테이블에서 가져온 작성자아이디를 등록시켜서 연동함.
 - 해당 작성자id를 통해서 전체목록조회에선 LEFT JOIN, 검색조회땐 서브쿼리활용해서 작성자이름을 땡겨옴
-- 작성자 등록페이지와 API제작 예정 (추후)
 - 수정아이콘을 클릭했을때 수정할 수 있는 내용과 작성자의 입력란이 노출됨.
 - 최종 [수정] 버튼 클릭시 input활성화 및 비밀번호 입력하였을 경우에만 수정 되도록
+
+
+#### 작성자등록)
+- 메인 페이지에서 작성자등록 버튼 클릭시 작성자등록 페이지이동
+- 이름 이메일만 입력받아서 API전송
+- DB에 저장되고, 일정등록 및 수정 작성자 SELECT박스에 반영
+
 
 #### 일정 검색조회)
 
@@ -103,6 +111,8 @@
 ## [레벨 5]
 
 ### 페이징 전체 로직
+![image](https://github.com/user-attachments/assets/59b9c9be-e717-438a-936b-faeeb5c49f80)
+
 ![image](https://github.com/user-attachments/assets/a17d5d54-8bf0-449e-9661-adc73712607c)
 
 ### ↓↓↓ 아래 상세설명 참고
@@ -188,5 +198,13 @@ LIMIT 6,3
 ★ 실제흐름과 같은형태로 LIMIT의 앞 번호만 바뀌어야한다.
 
 ★ LIMIT [몇번째부터] [보여줄 개수]
+
+
+### 페이징 영상) 
+
+https://github.com/user-attachments/assets/a9c1eb3a-2dde-403f-86ff-64e529e75f27
+
+
+
 
 
